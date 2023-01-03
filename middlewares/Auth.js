@@ -13,6 +13,16 @@ class Auth {
 
     const user = await User.findById(id);
 
+    if (!user) {
+      return res
+        .status(500)
+        .cookie("token", null, {
+          expires: new Date(Date.now()),
+          httpOnly: true,
+        })
+        .json({ message: "usuario invalido" });
+    }
+
     req.userId = user.id;
 
     return next();

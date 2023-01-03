@@ -50,7 +50,7 @@ class AuthController {
     try {
       const { email, password } = req.body;
 
-      const user = await User.findOne({ email: email });
+      const user = await User.findOne({ email: email }).select("+password");
 
       if (!user) {
         return res.status(422).json({

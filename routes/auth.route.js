@@ -4,18 +4,18 @@ const AuthController = require("../controllers/AuthController");
 const route = Router();
 
 const validate = require("../middlewares/HandleValidations");
-const UserValidations = require("../middlewares/UserValidations");
+const AuthValidations = require("../middlewares/AuthValidations");
 
 route.post(
   "/register",
-  UserValidations.registerValidation(),
+  AuthValidations.registerValidation(),
   validate,
   AuthController.register
 );
 
 route.post(
   "/login",
-  UserValidations.loginValidation(),
+  AuthValidations.loginValidation(),
   validate,
   AuthController.login
 );
