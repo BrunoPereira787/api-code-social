@@ -32,34 +32,6 @@ class UserController {
     }
   };
 
-  /*static updateProfileUser = async (req, res) => {
-    try {
-      let { username } = req.body;
-      const id = req.userId;
-
-      if (!username) {
-        return res.status(422).json({ message: "Nome do usuario obigatorio" });
-      }
-
-      const user = await User.findById(id);
-      const userExists = await User.findOne({ username: username });
-
-      if (user.username !== username && userExists) {
-        return res.status(422).json({ message: "Nome do usuario em uso" });
-      }
-
-      const newUser = await User.findByIdAndUpdate(id, req.body, {
-        new: true,
-      });
-
-      res.status(200).json({ newUser });
-    } catch (error) {
-      res.status(500).json({
-        message: error,
-      });
-    }
-  };*/
-
   static updateUser = async (req, res) => {
     try {
       const { name, username, email, password, confirmpassword } = req.body;
@@ -134,9 +106,6 @@ class UserController {
 
       const followUser = await User.findById(id); // buscar following(Meu Id)
       const followingUser = await User.findById(idUser); // buscar followes(Bruno)
-
-      console.log(followUser);
-      console.log(followingUser);
 
       // verificar se voce ja segue o usuario
       if (followUser.following.includes(idUser)) {

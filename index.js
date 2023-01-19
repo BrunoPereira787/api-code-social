@@ -7,6 +7,8 @@ const connectDatabase = require("./db/conn");
 
 const AuthRoute = require("./routes/auth.route");
 const UsersRoute = require("./routes/user.route");
+const ProfileRoute = require("./routes/profile.route");
+const PostsRoute = require("./routes/post.route");
 
 const app = express();
 
@@ -19,6 +21,8 @@ app.use(express.json());
 
 app.use("/auth", AuthRoute);
 app.use("/users", UsersRoute);
+app.use("/profile", ProfileRoute);
+app.use("/posts", PostsRoute);
 
 app.listen(port, () => {
   console.log("Servidor rodando na porta", port);
